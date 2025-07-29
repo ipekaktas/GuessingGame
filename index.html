@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="Sakire Ipek Demircan Aktas">
+  <title>Guessing Game</title>
+</head>
+<body>
+
+  <p id="demo" style="display:none;"></p>
+
+  <script>
+    let playAgain = true;
+
+    while (playAgain) {
+      const randomNumber = Math.floor(Math.random() * 10) + 1;
+      document.getElementById("demo").innerHTML = randomNumber;
+      console.log(randomNumber);
+
+      let guessCount = 0;
+      let guess;
+
+      do {
+        guess = Number(prompt("Guess a Number between 1 and 10."));
+        guessCount++;
+
+        if (guess > randomNumber) {
+          alert("Your guess was too high, guess again.");
+        } else if (guess < randomNumber) {
+          alert("Your guess was too low, guess again.");
+        } else if (guess === randomNumber) {
+          alert("You guessed it in " + guessCount + " guesses!");
+        }
+
+      } while (guess !== randomNumber);
+
+      const again = prompt("Do you want to play again? (yes or no)");
+      if (again.toLowerCase() !== "yes") {
+        playAgain = false;
+      }
+    }
+  </script>
+</body>
+</html>
